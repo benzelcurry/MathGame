@@ -4,7 +4,7 @@ string name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
 
 Console.WriteLine("------------------------------------------");
-Console.WriteLine($"Hello {name}. It's {date}.");
+Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}.");
 Console.WriteLine("Welcome to your math game.");
 Console.WriteLine(@"Please choose a game from the options below:
 A - Addition
