@@ -71,6 +71,30 @@ void AdditionGame()
 void SubtractionGame()
 {
     Console.WriteLine("Subtraction game selected.");
+
+    int score = 0;
+
+    for (int i = 0; i < 5; i++)
+    {
+        var random = new Random();
+        int firstNumber = random.Next(1, 9);
+        int secondNumber = random.Next(1, 9);
+
+        Console.WriteLine($"{firstNumber} - {secondNumber}");
+        var result = Console.ReadLine();
+
+        if (int.Parse(result) == firstNumber - secondNumber)
+        {
+            Console.WriteLine("Correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("Incorrect. :(");
+        }
+    }
+
+    Console.WriteLine($"Game over. Final score: {score}");
 }
 
 void MultiplicationGame()
