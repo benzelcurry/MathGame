@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Please enter your name:");
+﻿using static System.Formats.Asn1.AsnWriter;
+
+Console.WriteLine("Please enter your name:");
 
 string name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
@@ -129,4 +131,33 @@ void MultiplicationGame()
 void DivisionGame()
 {
     Console.WriteLine("Division game selected.");
+
+    int score = 0;
+    var random = new Random();
+
+    for (int i = 0; i < 5; i++)
+    {
+        int firstNumber = random.Next(0, 101);
+        int secondNumber = random.Next(1, 11);
+
+        while (firstNumber % secondNumber != 0)
+        {
+            firstNumber = random.Next(0, 101);
+            secondNumber = random.Next(1, 11);
+        }
+
+        Console.WriteLine($"{firstNumber} / {secondNumber}");
+        var result = Console.ReadLine();
+
+
+        if (int.Parse(result) == firstNumber / secondNumber)
+        {
+            Console.WriteLine("Correct!");
+            score++;
+        }
+        else
+        {
+            Console.WriteLine("Incorrect. :(");
+        }
+    }
 }
