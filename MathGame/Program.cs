@@ -18,25 +18,43 @@ Q - Quit the program
 ");
 Console.WriteLine("------------------------------------------");
 
-var gameSelected = Console.ReadLine().Trim().ToLower();
+var gameSelected = Console.ReadLine()?.Trim().ToLower() ?? "";
 
-if (gameSelected == "a")
+switch (gameSelected)
+{
+    case "a":
+        AdditionGame();
+        break;
+    case "s":
+        SubtractionGame();
+        break;
+    case "m":
+        MultiplicationGame();
+        break;
+    case "d":
+        DivisionGame();
+        break;
+    default:
+        Console.WriteLine("Invalid input detected. Application closing.");
+        break;
+}
+
+void AdditionGame()
 {
     Console.WriteLine("Addition game selected.");
 }
-else if (gameSelected == "s")
+
+void SubtractionGame()
 {
     Console.WriteLine("Subtraction game selected.");
 }
-else if (gameSelected == "m")
+
+void MultiplicationGame()
 {
     Console.WriteLine("Multiplication game selected.");
 }
-else if (gameSelected == "d")
+
+void DivisionGame()
 {
     Console.WriteLine("Division game selected.");
-}
-else
-{
-    Console.WriteLine("Invalid input detected. Goodbye!");
 }
