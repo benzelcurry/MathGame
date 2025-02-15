@@ -2,7 +2,7 @@
 {
     internal class GameEngine
     {
-        public static void AdditionGame()
+        public static int AdditionGame()
         {
             Console.WriteLine("Addition game selected.");
 
@@ -29,9 +29,11 @@
             }
 
             Console.WriteLine($"Game over. Final score: {score}");
+
+            return score;
         }
 
-        public static void SubtractionGame()
+        public static int SubtractionGame()
         {
             Console.WriteLine("Subtraction game selected.");
 
@@ -58,9 +60,11 @@
             }
 
             Console.WriteLine($"Game over. Final score: {score}");
+
+            return score;
         }
 
-        public static void MultiplicationGame()
+        public static int MultiplicationGame()
         {
             Console.WriteLine("Multiplication game selected.");
 
@@ -87,9 +91,11 @@
             }
 
             Console.WriteLine($"Game over. Final score: {score}");
+
+            return score;
         }
 
-        public static void DivisionGame()
+        public static int DivisionGame()
         {
             Console.WriteLine("Division game selected.");
 
@@ -121,6 +127,8 @@
                     Console.WriteLine("Incorrect. :(");
                 }
             }
+
+            return score;
         }
     }
 }
