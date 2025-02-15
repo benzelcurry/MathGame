@@ -4,17 +4,25 @@
     {
         public List<int> History { get; set; } = [];
         public bool PlayGame { get; set; } = true;
+        public string Name { get; set; } = "";
+        public DateTime Date { get; set; } = DateTime.UtcNow;
 
         private string Play()
         {
-            Console.WriteLine("Please enter your name:");
+            if (History.Count > 0)
+            {
+                Console.WriteLine("Previous scores:");
+                Console.WriteLine(string.Join(", ", History));
+                Thread.Sleep(3000);
+            }
 
-            string name = Console.ReadLine() ?? "Anonymous";
-            DateTime date = DateTime.UtcNow;
+            if (string.IsNullOrEmpty(Name))
+            {
+                Console.WriteLine("Please enter your name:");
+                Name = Console.ReadLine() ?? "Anonymous";
+            }
 
-            List<string> games = new();
-
-            Menu.Display(name, date);
+            Menu.Display(Name, Date);
 
             string gameSelected = Console.ReadLine()?.Trim().ToLower() ?? "";
 
@@ -41,7 +49,7 @@
 
             string playAgain = Console.ReadLine()?.Trim().ToLower() ?? "";
 
-            while (playAgain != "yes" || playAgain != "no")
+            while (playAgain != "yes" && playAgain != "no")
             {
                 Console.WriteLine("Sorry, I don't understand that. Please input 'Yes' or 'No'");
                 playAgain = Console.ReadLine()?.Trim().ToLower() ?? "";
@@ -54,12 +62,6 @@
 
         public void Loop()
         {
-            if (History.Count > 0)
-            {
-                Console.WriteLine("Previous scores:");
-                Console.WriteLine(string.Join(", ", History));
-            }
-
             while (PlayGame)
             {
                 Play();
