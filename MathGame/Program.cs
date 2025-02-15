@@ -1,24 +1,18 @@
-﻿using static System.Formats.Asn1.AsnWriter;
+﻿using MathGame;
+
+Menu menu = new Menu();
 
 Console.WriteLine("Please enter your name:");
 
 string name = Console.ReadLine();
 DateTime date = DateTime.UtcNow;
 
+List<string> games = new();
+
 if (string.IsNullOrEmpty(name))
     name = "Anonymous";
 
-Console.WriteLine("------------------------------------------");
-Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}.");
-Console.WriteLine("Welcome to your math game.");
-Console.WriteLine(@"Please choose a game from the options below:
-A - Addition
-S - Subtraction
-M - Multiplication
-D - Division
-Q - Quit the program
-");
-Console.WriteLine("------------------------------------------");
+menu.Display(name, date);
 
 var gameSelected = Console.ReadLine()?.Trim().ToLower() ?? "";
 

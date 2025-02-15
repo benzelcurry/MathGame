@@ -2,7 +2,7 @@
 {
     internal class Menu
     {
-        static void Display(string name, DateTime date)
+        public void Display(string name, DateTime date)
         {
             Console.WriteLine("------------------------------------------");
             Console.WriteLine($"Hello {name}. It's {date.DayOfWeek}.");
