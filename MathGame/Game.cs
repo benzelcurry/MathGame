@@ -3,8 +3,9 @@
     internal class Game
     {
         public List<int> History { get; set; } = [];
+        public bool PlayGame { get; set; } = true;
 
-        public void Play()
+        private string Play()
         {
             Console.WriteLine("Please enter your name:");
 
@@ -46,7 +47,23 @@
                 playAgain = Console.ReadLine()?.Trim().ToLower() ?? "";
             }
 
+            PlayGame = (playAgain == "yes");
+
             return playAgain;
+        }
+
+        public void Loop()
+        {
+            if (History.Count > 0)
+            {
+                Console.WriteLine("Previous scores:");
+                Console.WriteLine(string.Join(", ", History));
+            }
+
+            while (PlayGame)
+            {
+                Play();
+            }
         }
     }
 }
