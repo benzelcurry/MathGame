@@ -2,7 +2,7 @@
 {
     internal class Game
     {
-        public List<int> History { get; set; } = new List<int>();
+        public List<int> History { get; set; } = [];
 
         public void Play()
         {
@@ -15,26 +15,38 @@
 
             Menu.Display(name, date);
 
-            var gameSelected = Console.ReadLine()?.Trim().ToLower() ?? "";
+            string gameSelected = Console.ReadLine()?.Trim().ToLower() ?? "";
 
             switch (gameSelected)
             {
                 case "a":
-                    GameEngine.AdditionGame();
+                    History.Add(GameEngine.AdditionGame());
                     break;
                 case "s":
-                    GameEngine.SubtractionGame();
+                    History.Add(GameEngine.SubtractionGame());
                     break;
                 case "m":
-                    GameEngine.MultiplicationGame();
+                    History.Add(GameEngine.MultiplicationGame());
                     break;
                 case "d":
-                    GameEngine.DivisionGame();
+                    History.Add(GameEngine.DivisionGame());
                     break;
                 default:
                     Console.WriteLine("Invalid input detected. Application closing.");
                     break;
             }
+
+            Console.WriteLine("Would you like to play again? (Yes / No)");
+
+            string playAgain = Console.ReadLine()?.Trim().ToLower() ?? "";
+
+            while (playAgain != "yes" || playAgain != "no")
+            {
+                Console.WriteLine("Sorry, I don't understand that. Please input 'Yes' or 'No'");
+                playAgain = Console.ReadLine()?.Trim().ToLower() ?? "";
+            }
+
+            return playAgain;
         }
     }
 }
